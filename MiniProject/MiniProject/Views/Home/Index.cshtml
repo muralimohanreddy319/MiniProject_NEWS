@@ -1,0 +1,106 @@
+﻿@model MiniProject.Models.Visitor
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<h4>Visitor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        New Visitor?
+        <form asp-action="Index">
+            <div class="form-group">
+                <label>
+                    <input value="no" type="radio" name="visitorradio"
+                           onclick="displayForm(this)">No
+                </label>
+                <br>
+                <label>
+                    <input value="yes" type="radio" name="visitorradio"
+                           onclick="displayForm(this)">Yes
+                </label>
+            </div>
+        </form>
+
+        <form asp-action="Index" style="visibility:hidden" id="notvisited"enctype="multipart/form-data"onload="loadFunction()">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="VisitorNum" class="control-label"></label>
+                <input asp-for="VisitorNum" class="form-control" />
+                <span asp-validation-for="VisitorNum" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="VisitorName" class="control-label"></label>
+                <input asp-for="VisitorName" class="form-control" />
+                <span asp-validation-for="VisitorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact" class="control-label"></label>
+                <input asp-for="Contact" class="form-control" />
+                <span asp-validation-for="Contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Picture" class="control-label"></label>
+                @*<input asp-for="Picture" class="form-control" />*@
+                <input asp-for="Picture" type="file" Class="form-control" name="user_image" id="user_image" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ename" class="control-label"></label>
+                <input asp-for="Ename" class="form-control" />
+                <span asp-validation-for="Ename" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpEmail" class="control-label"></label>
+                <input asp-for="EmpEmail" class="form-control"/>
+                <span asp-validation-for="EmpEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group" >
+                @*<label asp-for="DateAndTime" class="control-label"></label>*@
+                <b>Date and Time:</b><input asp-for="DateAndTime" class="form-control" id="datetime" disabled="disabled" value="11/21/2019 10:42 PM"/>
+                <span asp-validation-for="DateAndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" id="btn1" />
+            </div>
+        </form>
+
+        <div style="visibility:hidden;position:relative;top:-580px;" id="visitedformContainer">
+            <form asp-action="Index" id="visited">
+                <div class="form-group">
+                    <label asp-for="Contact" class="control-label"></label>
+                    <input asp-for="Contact" class="form-control" />
+                    <span asp-validation-for="Contact" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Ename" class="control-label"></label>
+                    <input asp-for="Ename" class="form-control" />
+                    <span asp-validation-for="Ename" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EmpEmail" class="control-label"></label>
+                    <input asp-for="EmpEmail" class="form-control" />
+                    <span asp-validation-for="EmpEmail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
